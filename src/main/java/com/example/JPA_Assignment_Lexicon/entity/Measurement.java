@@ -1,4 +1,8 @@
 package com.example.JPA_Assignment_Lexicon.entity;
 
-public class Measurement {
+import javax.persistence.Entity;
+
+@Entity
+public enum Measurement {
+    G, HG, KG, ML, DL, L;
 }
