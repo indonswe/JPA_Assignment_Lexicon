@@ -7,7 +7,7 @@ import java.time.LocalDate;
 public class Ingredient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer ingredientId;
+    private int ingredientId;
     private String ingredientName;
 
     public Ingredient(Integer ingredientId,
@@ -15,6 +15,12 @@ public class Ingredient {
         this.ingredientId = ingredientId;
         this.ingredientName = ingredientName;
     }
+
+    public Ingredient(String ingredientName) {
+
+        this.ingredientName = ingredientName;
+    }
+
 
     public int getIngredientId() {
         return ingredientId;

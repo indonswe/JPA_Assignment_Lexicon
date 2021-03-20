@@ -30,7 +30,7 @@ class IngredientDAORepositoryTest {
 
     @BeforeEach
     void setUp() {
-        Ingredient unpersisted = new Ingredient(null,"Deca-durabolin");
+        Ingredient unpersisted = new Ingredient("Deca-durabolin");
         persistedIngredient = em.persistAndFlush(unpersisted);
     }
 
@@ -41,7 +41,7 @@ class IngredientDAORepositoryTest {
 
     @Test
     void create() {
-        Ingredient ing = new Ingredient(null,"Peppar");
+        Ingredient ing = new Ingredient("Peppar");
         Ingredient result = testObject.create(ing);
         assertNotNull(result);
         assertNotNull(result.getIngredientId());
