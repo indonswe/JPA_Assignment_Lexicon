@@ -16,9 +16,19 @@ public class Ingredient {
         this.ingredientName = ingredientName;
     }
 
+    public int getIngredientId() {
+        return ingredientId;
+    }
 
+    public String getIngredientName() {
+        return ingredientName;
+    }
 
-        /*private int appUserId;
+    public void setIngredientName(String ingredientName) {
+        this.ingredientName = ingredientName;
+    }
+
+    /*private int appUserId;
         //@Column(unique = true)
         private String username;
         private String password;

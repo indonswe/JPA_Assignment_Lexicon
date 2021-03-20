@@ -22,7 +22,7 @@ public class IngredientDAORepository implements IngredientDAO {
     @Override
     @Transactional
     public Ingredient create(Ingredient ingredient) {
-        return null;
+        return ingredient;
     }
 
     @Override
