@@ -1,9 +1,6 @@
 package com.example.JPA_Assignment_Lexicon.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Collection;
 
 
@@ -13,8 +10,28 @@ public class Recipe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer recipeId;
     private String recipeName;
+
+    @OneToMany(
+            cascade = {CascadeType.DETACH, CascadeType.REFRESH},
+            fetch = FetchType.LAZY
+    )
     private Collection<RecipeIngredient> recipeIngredientC;
+
+    @OneToOne(
+            cascade = {CascadeType.DETACH, CascadeType.REFRESH},
+            fetch = FetchType.LAZY
+    )
     private RecipeInstruction recipeInstruction;
+
+    @ManyToMany(
+            cascade = {CascadeType.DETACH, CascadeType.REFRESH},
+            fetch = FetchType.LAZY
+    )
+    @JoinTable(
+            name = "recipe_and_recipe_category",
+            joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "recipe_category_id")
+    )
     private Collection<RecipeCategory>  recipeCategoryC;
 
     public Recipe(Integer recipeId,

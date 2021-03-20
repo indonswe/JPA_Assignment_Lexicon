@@ -2,7 +2,7 @@ package com.example.JPA_Assignment_Lexicon.entity;
 
 import javax.persistence.Entity;
 
-@Entity
+//@Entity
 public enum Measurement {
-    G, HG, KG, ML, DL, L;
+    MG, G, KG, ML, DL, L;
 }

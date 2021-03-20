@@ -2,9 +2,7 @@ package com.example.JPA_Assignment_Lexicon.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Collection;
 
 
@@ -14,10 +12,26 @@ public class RecipeIngredient {
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name= "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private String recipeIngredientId;
-    private Ingredient ingredient;
+    //private Ingredient ingredient;
     private double amount;
     private Measurement measurement;
+    //private Recipe recipe;
+
+
+    @ManyToOne(
+            cascade = {CascadeType.DETACH, CascadeType.REFRESH},
+            fetch = FetchType.LAZY
+    )
+    @JoinColumn(name = "ingredient_id", table = "recipe_ingredient")
+    private Ingredient ingredient;
+
+    @ManyToOne(
+            cascade = {CascadeType.DETACH, CascadeType.REFRESH},
+            fetch = FetchType.LAZY
+    )
+    @JoinColumn(name = "recipe_id", table = "recipe_ingredient")
     private Recipe recipe;
+
 
     public RecipeIngredient(String recipeIngredientId,
                             Ingredient ingredient,
