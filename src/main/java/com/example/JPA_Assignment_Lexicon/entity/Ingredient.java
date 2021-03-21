@@ -2,12 +2,14 @@ package com.example.JPA_Assignment_Lexicon.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Entity
 public class Ingredient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ingredientId;
+    @Column(unique = true)
     private String ingredientName;
 
     public Ingredient(Integer ingredientId,
@@ -34,13 +36,19 @@ public class Ingredient {
         this.ingredientName = ingredientName;
     }
 
-    /*private int appUserId;
-        //@Column(unique = true)
-        private String username;
-        private String password;
-        private LocalDate regDate;
-        //@OneToOne(cascade = CascadeType.ALL)
-        //@JoinColumn(name = "details_id", table = "app_user")
-        //private Details userDetails;
-        */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ingredient that = (Ingredient) o;
+        return ingredientId == that.ingredientId &&
+                ingredientName.equals(that.ingredientName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ingredientId, ingredientName);
+    }
+
+
 }

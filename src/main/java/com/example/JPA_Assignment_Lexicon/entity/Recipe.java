@@ -12,9 +12,11 @@ public class Recipe {
     private String recipeName;
 
     @OneToMany(
-            cascade = {CascadeType.DETACH, CascadeType.REFRESH},
-            fetch = FetchType.LAZY
+            cascade = {CascadeType.PERSIST,CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH},
+            fetch = FetchType.LAZY,
+            mappedBy = "recipe"
     )
+
     private Collection<RecipeIngredient> recipeIngredientC;
 
     @OneToOne(

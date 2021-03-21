@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import java.util.Collection;
+import java.util.List;
 
 @Repository
 public class IngredientDAORepository implements IngredientDAO {
@@ -33,7 +34,7 @@ public class IngredientDAORepository implements IngredientDAO {
         /*return em
                 .createQuery("SELECT s FROM Ingredient s WHERE UPPER(s.ingredientName) = UPPER(?1)", Ingredient.class)
                 .setParameter(1,ingredientName)
-                .getIngredient();
+                .getResultList();
         return em
                 .createQuery("SELECT s FROM Student s WHERE UPPER(s.lastName) = UPPER(?1)", Student.class)
                 .setParameter(1, lastName)

@@ -8,6 +8,7 @@ import javax.persistence.Id;
 
 @Entity
 public class RecipeInstruction {
+
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
