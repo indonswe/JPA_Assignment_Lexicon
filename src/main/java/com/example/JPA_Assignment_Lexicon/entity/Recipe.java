@@ -10,23 +10,24 @@ public class Recipe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer recipeId;
     private String recipeName;
-
+/*
     @OneToMany(
             cascade = {CascadeType.PERSIST,CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH},
             fetch = FetchType.LAZY,
             mappedBy = "recipe"
     )
-
+*/
     private Collection<RecipeIngredient> recipeIngredientC;
 
     @OneToOne(
-            cascade = {CascadeType.DETACH, CascadeType.REFRESH},
+            cascade = {CascadeType.ALL},
             fetch = FetchType.LAZY
+            //@JoinColumn(name = "recipe_instruction_id")
     )
     private RecipeInstruction recipeInstruction;
 
     @ManyToMany(
-            cascade = {CascadeType.DETACH, CascadeType.REFRESH},
+            cascade = {CascadeType.PERSIST,CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH},
             fetch = FetchType.LAZY
     )
     @JoinTable(
