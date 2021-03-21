@@ -51,6 +51,11 @@ class IngredientDAORepositoryTest {
 
     @Test
     void findByName() {
+        String ingName = persistedIngredient.getIngredientName();
+        Ingredient result = testObject.findByName(ingName);
+        /*assertNotNull(result);
+        assertEquals(persistedIngredient, result);*/
+
     }
 
     @Test

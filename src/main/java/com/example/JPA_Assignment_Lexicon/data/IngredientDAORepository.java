@@ -24,10 +24,20 @@ public class IngredientDAORepository implements IngredientDAO {
     public Ingredient create(Ingredient ingredient) {
         return ingredient;
     }
-
     @Override
-    public Ingredient findByName(String ingredient) {
-        return null;
+    @Transactional
+    public Ingredient findByName(String ingredientName) {
+
+        return em.find(Ingredient.class,ingredientName);
+
+        /*return em
+                .createQuery("SELECT s FROM Ingredient s WHERE UPPER(s.ingredientName) = UPPER(?1)", Ingredient.class)
+                .setParameter(1,ingredientName)
+                .getIngredient();
+        return em
+                .createQuery("SELECT s FROM Student s WHERE UPPER(s.lastName) = UPPER(?1)", Student.class)
+                .setParameter(1, lastName)
+                .getResultList();*/
     }
 
     @Override
