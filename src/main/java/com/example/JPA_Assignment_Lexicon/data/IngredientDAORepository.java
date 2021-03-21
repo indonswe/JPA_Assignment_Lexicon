@@ -31,8 +31,13 @@ public class IngredientDAORepository implements IngredientDAO {
     }
 
     @Override
-    public Ingredient findById(Integer ingredient) {
-        return null;
+    @Transactional(readOnly = true)
+    public Ingredient findById(Integer ingredientId) {
+
+return em.find(Ingredient.class,ingredientId);
+
+            //return em.find(Student.class, studentId);
+
     }
 
     @Override

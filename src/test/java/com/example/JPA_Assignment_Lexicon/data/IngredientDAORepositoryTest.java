@@ -3,6 +3,7 @@ package com.example.JPA_Assignment_Lexicon.data;
 import com.example.JPA_Assignment_Lexicon.entity.Ingredient;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -54,6 +55,21 @@ class IngredientDAORepositoryTest {
 
     @Test
     void findById() {
+        Integer ingId = persistedIngredient.getIngredientId();
+        Ingredient result = testObject.findById(ingId);
+        assertNotNull(result);
+        assertEquals(persistedIngredient, result);
+
+
+       /* @Test
+        @DisplayName("Given studentId findById should return entity")
+        void findById() {
+            Integer studentId = persistedStudent.getStudentId();
+
+            Student result = testObject.findById(studentId);
+
+            assertNotNull(result);
+            assertEquals(persistedStudent, result);*/
     }
 
     @Test
