@@ -54,13 +54,11 @@ class IngredientDAORepositoryTest {
     void findByName() {
 
         Ingredient DecaD = testObject.findByName("Deca-durabolin");
-
-
-
-        // String ingName = persistedIngredient.getIngredientName();
-        //Ingredient result = testObject.findByName(ingName);
-        /*assertNotNull(result);
-        assertEquals(persistedIngredient, result);*/
+        String ingName = persistedIngredient.getIngredientName();
+        //String ingName = persistedIngredient.getIngredientName();
+        Ingredient result = testObject.findByName(ingName);
+        assertNotNull(result);
+        assertEquals(persistedIngredient, result);
 
     }
 
