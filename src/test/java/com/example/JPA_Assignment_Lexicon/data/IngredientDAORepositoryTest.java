@@ -25,7 +25,8 @@ class IngredientDAORepositoryTest {
 
     @Autowired
     private IngredientDAO testObject;
-    @Autowired private TestEntityManager em;
+    @Autowired
+    private TestEntityManager em;
 
     private Ingredient persistedIngredient;
 
@@ -51,8 +52,13 @@ class IngredientDAORepositoryTest {
 
     @Test
     void findByName() {
-        String ingName = persistedIngredient.getIngredientName();
-        Ingredient result = testObject.findByName(ingName);
+
+        Ingredient DecaD = testObject.findByName("Deca-durabolin");
+
+
+
+        // String ingName = persistedIngredient.getIngredientName();
+        //Ingredient result = testObject.findByName(ingName);
         /*assertNotNull(result);
         assertEquals(persistedIngredient, result);*/
 

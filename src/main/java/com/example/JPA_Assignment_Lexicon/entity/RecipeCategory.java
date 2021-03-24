@@ -14,7 +14,7 @@ public class RecipeCategory {
             fetch = FetchType.LAZY
     )
     @JoinTable(
-            name = "recipe_and_recipe_category",
+            name = "recipe_id_recipe_category_id",
             joinColumns = @JoinColumn(name = "recipe_category_id"),
             inverseJoinColumns = @JoinColumn(name = "recipe_id")
     )

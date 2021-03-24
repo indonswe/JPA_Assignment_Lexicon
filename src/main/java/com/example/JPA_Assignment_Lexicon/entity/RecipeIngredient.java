@@ -22,16 +22,16 @@ public class RecipeIngredient {
             cascade = {CascadeType.PERSIST,CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH},
             fetch = FetchType.LAZY
     )
-    //@JoinColumn(name = "ingredient_id")
-    private Ingredient ingredient;
+    @JoinColumn(name = "ingredient_id", table ="recipe_ingredient")
+    Ingredient ingredient;
 
     @ManyToOne(
             cascade = {CascadeType.PERSIST,CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH},
             fetch = FetchType.LAZY
     )
 
-    //@JoinColumn(name = "recipe_id", table = "recipe_ingredient")
-    private Recipe recipe;
+    @JoinColumn(name = "recipe_id")
+    Recipe recipe;
 
 
     public RecipeIngredient(String recipeIngredientId,

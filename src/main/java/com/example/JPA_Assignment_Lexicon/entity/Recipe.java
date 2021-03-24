@@ -10,20 +10,19 @@ public class Recipe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer recipeId;
     private String recipeName;
-/*
+
     @OneToMany(
             cascade = {CascadeType.PERSIST,CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH},
             fetch = FetchType.LAZY,
             mappedBy = "recipe"
     )
-*/
     private Collection<RecipeIngredient> recipeIngredientC;
 
     @OneToOne(
             cascade = {CascadeType.ALL},
             fetch = FetchType.LAZY
-            //@JoinColumn(name = "instruction_id")
     )
+    @JoinColumn(name = "recipe_instruction_id")
     private RecipeInstruction recipeInstruction;
 
     @ManyToMany(
@@ -31,7 +30,7 @@ public class Recipe {
             fetch = FetchType.LAZY
     )
     @JoinTable(
-            name = "recipe_and_recipe_category",
+            name = "recipe_id_recipe_category_id",
             joinColumns = @JoinColumn(name = "recipe_id"),
             inverseJoinColumns = @JoinColumn(name = "recipe_category_id")
     )
