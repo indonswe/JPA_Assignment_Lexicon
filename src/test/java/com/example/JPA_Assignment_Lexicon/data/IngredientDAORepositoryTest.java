@@ -59,6 +59,7 @@ class IngredientDAORepositoryTest {
         Ingredient result = testObject.findByName(ingName);
         assertNotNull(result);
         assertEquals(persistedIngredient, result);
+        System.out.println(persistedIngredient.getIngredientId() + " checking " + DecaD.getIngredientId());
 
     }
 
