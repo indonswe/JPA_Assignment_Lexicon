@@ -64,11 +64,29 @@ return em.find(Ingredient.class,ingredientId);
 
     @Override
     public Ingredient update(Ingredient ingredient) {
-        return null;
+        return em.merge(ingredient);
     }
 
     @Override
     public void delete(Integer ingredientId) {
+       Ingredient toRemove = findById(ingredientId);
+        if(toRemove != null){
+            em.remove(toRemove);
 
+        }else {
+            throw new IllegalArgumentException("Ingredient could not be found");
+        }
+        toRemove = findById(ingredientId);
+        //return toRemove == null;
+
+        /*Student toRemove = findById(studentId);
+        if(toRemove != null){
+            em.remove(toRemove);
+
+        }else {
+            throw new IllegalArgumentException("Student could not be found");
+        }
+        toRemove = findById(studentId);
+        return toRemove == null;*/
     }
 }
