@@ -30,6 +30,7 @@ public class RecipeDAORepository implements RecipeDAO {
     }
 
     @Override
+    @Transactional
     public Recipe findByRecipeName(String recipeName) {
 
         List<Recipe> answer = new ArrayList();
@@ -70,13 +71,14 @@ public class RecipeDAORepository implements RecipeDAO {
     }
 
     @Override
+    @Transactional
     public Collection<Recipe> findAllRecipesContainingIngredient(String ingredientName) {
-        List<Ingredient> answer = new ArrayList();
+        List<Recipe> answer = new ArrayList();
         answer = em
-                .createQuery("SELECT s FROM Ingredient s WHERE UPPER(s.ingredientName) = UPPER(?1)", Ingredient.class)
+                .createQuery("SELECT s FROM Recipe s WHERE UPPER(s.ingredientName) = UPPER(?1)", Recipe.class)
                 .setParameter(1,ingredientName)
                 .getResultList();
-        return
+        return answer;
 
     }
 
