@@ -1,11 +1,14 @@
 package com.example.JPA_Assignment_Lexicon.data;
 
+import com.example.JPA_Assignment_Lexicon.entity.Ingredient;
 import com.example.JPA_Assignment_Lexicon.entity.Recipe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class RecipeDAORepository implements RecipeDAO {
     private EntityManager em;
@@ -28,7 +31,32 @@ public class RecipeDAORepository implements RecipeDAO {
 
     @Override
     public Recipe findByRecipeName(String recipeName) {
-        return null;
+
+        List<Recipe> answer = new ArrayList();
+        Recipe name = null;
+        answer = em
+                .createQuery("SELECT s FROM Recipe s WHERE UPPER(s.recipeName) = UPPER(?1)", Recipe.class)
+                .setParameter(1,recipeName)
+                .getResultList();
+
+        for (Recipe i :answer) {
+            name = i;
+        }
+
+        return name;
+        /*List<Ingredient> answer = new ArrayList();
+        Ingredient name = null;
+        answer = em
+                .createQuery("SELECT s FROM Ingredient s WHERE UPPER(s.ingredientName) = UPPER(?1)", Ingredient.class)
+                .setParameter(1,ingredientName)
+                .getResultList();
+
+
+        for (Ingredient i :answer) {
+            name = i;
+        }
+
+        return name;*/
     }
 
     @Override
@@ -42,8 +70,14 @@ public class RecipeDAORepository implements RecipeDAO {
     }
 
     @Override
-    public Collection<Recipe> findAllRecipesContainingIngredient() {
-        return null;
+    public Collection<Recipe> findAllRecipesContainingIngredient(String ingredientName) {
+        List<Ingredient> answer = new ArrayList();
+        answer = em
+                .createQuery("SELECT s FROM Ingredient s WHERE UPPER(s.ingredientName) = UPPER(?1)", Ingredient.class)
+                .setParameter(1,ingredientName)
+                .getResultList();
+        return
+
     }
 
     @Override
