@@ -27,4 +27,9 @@ public class RecipeCategory {
         this.category = category;
         this.recipeC = recipeC;
     }
+
+    public RecipeCategory(String category, Collection<Recipe> recipeC) {
+        this.category = category;
+        this.recipeC = recipeC;
+    }
 }

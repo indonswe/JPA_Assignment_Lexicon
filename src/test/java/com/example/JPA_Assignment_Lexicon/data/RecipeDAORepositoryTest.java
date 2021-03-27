@@ -12,6 +12,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -29,18 +32,23 @@ class RecipeDAORepositoryTest {
 
     private Ingredient persistedIngredient;
 
+    private List<Recipe> recipeC = new ArrayList<>();
+    private List<RecipeIngredient> recipeIngredientC = new ArrayList<>();
+    private List<RecipeCategory> recipeCategoryC = new ArrayList<>();
+
 
     @BeforeEach
     void setUp() {
         Ingredient unpersisted = new Ingredient("Deca-durabolin");
         persistedIngredient = em.persistAndFlush(unpersisted);
-        Recipe recipe = new Recipe();
-        RecipeCategory recipeCategory = new RecipeCategory();
+        RecipeInstruction recipeInstruction = new RecipeInstruction("Put everything together and hope for the best");
+        Recipe recipe = new Recipe("Karl-Alfred",recipeIngredientC,recipeInstruction,recipeCategoryC);
+        //public Recipe(String recipeName, Collection<RecipeIngredient> recipeIngredientC, RecipeInstruction recipeInstruction, Collection<RecipeCategory> recipeCategoryC) {
+        RecipeCategory recipeCategory = new RecipeCategory("Uppbyggande",recipeC);
         RecipeIngredient recipeIngredient = new RecipeIngredient(5.0,unpersisted,recipe);
         //public RecipeIngredient(double amount, Measurement measurement, Ingredient ingredient, Recipe recipe) {
 
-            RecipeInstruction recipeInstruction =
-                new RecipeInstruction("Put everything together and hope for the best");
+
     }
 
     @AfterEach

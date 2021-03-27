@@ -47,4 +47,11 @@ public class Recipe {
         this.recipeInstruction = recipeInstruction;
         this.recipeCategoryC = recipeCategoryC;
     }
+
+    public Recipe(String recipeName, Collection<RecipeIngredient> recipeIngredientC, RecipeInstruction recipeInstruction, Collection<RecipeCategory> recipeCategoryC) {
+        this.recipeName = recipeName;
+        this.recipeIngredientC = recipeIngredientC;
+        this.recipeInstruction = recipeInstruction;
+        this.recipeCategoryC = recipeCategoryC;
+    }
 }
