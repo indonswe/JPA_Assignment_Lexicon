@@ -3,6 +3,7 @@ package com.example.JPA_Assignment_Lexicon.data;
 import com.example.JPA_Assignment_Lexicon.entity.Ingredient;
 import com.example.JPA_Assignment_Lexicon.entity.Recipe;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+@Repository
 public class RecipeDAORepository implements RecipeDAO {
     private EntityManager em;
     @Autowired
@@ -86,4 +88,5 @@ public class RecipeDAORepository implements RecipeDAO {
     public Collection<Recipe> findAllRecipesOfCategory() {
         return null;
     }
+
 }

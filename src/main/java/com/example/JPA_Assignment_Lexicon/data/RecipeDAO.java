@@ -13,4 +13,5 @@ public interface RecipeDAO {
     void delete(Integer recipeId);
     Collection<Recipe> findAllRecipesContainingIngredient(String ingredientName);
     Collection<Recipe> findAllRecipesOfCategory();
+
 }

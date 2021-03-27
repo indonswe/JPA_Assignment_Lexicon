@@ -15,11 +15,14 @@ public class RecipeInstruction {
     private String recipeInstructionId;
     private String recipeInstruction;
 
-
+    public RecipeInstruction(String recipeInstruction) {
+        this.recipeInstruction = recipeInstruction;
+    }
 
     public RecipeInstruction(String recipeInstructionId,
                              String recipeInstruction) {
         this.recipeInstructionId = recipeInstructionId;
         this.recipeInstruction = recipeInstruction;
     }
+
 }
