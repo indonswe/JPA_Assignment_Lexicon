@@ -48,8 +48,11 @@ class RecipeDAORepositoryTest {
         RecipeCategory recipeCategory = new RecipeCategory("Uppbyggande",recipeC);
         RecipeIngredient recipeIngredient = new RecipeIngredient(5.0,unpersisted,recipe);
         //public RecipeIngredient(double amount, Measurement measurement, Ingredient ingredient, Recipe recipe) {
-
-
+        em.persist(recipeInstruction);
+        em.persist(recipe);
+        em.persist(recipeCategory);
+        em.persist(recipeIngredient);
+        em.flush();
     }
 
     @AfterEach

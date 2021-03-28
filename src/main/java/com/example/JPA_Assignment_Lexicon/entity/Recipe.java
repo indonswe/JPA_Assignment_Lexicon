@@ -13,8 +13,14 @@ public class Recipe {
 
     @OneToMany(
             cascade = {CascadeType.PERSIST,CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH},
-            fetch = FetchType.LAZY,
-            mappedBy = "recipe"
+            fetch = FetchType.LAZY
+            //mappedBy = "recipe"
+    )
+    //Trying to connect ingrdients with recipe, of course dont know what I am doing :)
+    @JoinTable(
+            name = "recipe_id_recipe_ingredient_id",
+            joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "recipe_ingredient_id")
     )
     private Collection<RecipeIngredient> recipeIngredientC;
 
