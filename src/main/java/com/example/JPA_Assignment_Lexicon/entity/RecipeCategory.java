@@ -8,13 +8,14 @@ public class RecipeCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer recipeCategoryId;
+    @Column(unique = true)
     private String category;
     @ManyToMany(
             cascade = {CascadeType.PERSIST,CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH},
             fetch = FetchType.LAZY
     )
     @JoinTable(
-            name = "recipe_id_recipe_category_id",
+            name = "recipe_recipe_category",
             joinColumns = @JoinColumn(name = "recipe_category_id"),
             inverseJoinColumns = @JoinColumn(name = "recipe_id")
     )

@@ -23,15 +23,15 @@ public class RecipeIngredient {
             fetch = FetchType.LAZY
     )
     @JoinColumn(name = "ingredient_id", table ="recipe_ingredient")
-    Ingredient ingredient;
+    private Ingredient ingredient;
 
     @ManyToOne(
             cascade = {CascadeType.PERSIST,CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH},
             fetch = FetchType.LAZY
     )
 
-    @JoinColumn(name = "recipe_id")
-    Recipe recipe;
+    @JoinColumn(name = "recipe_id", table = "recipe_ingredient")
+    private Recipe recipe;
 
 
     public RecipeIngredient(double amount, Ingredient ingredient, Recipe recipe) {

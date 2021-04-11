@@ -76,10 +76,13 @@ public class RecipeDAORepository implements RecipeDAO {
     @Transactional
     public Collection<Recipe> findAllRecipesContainingIngredient(String ingredientName) {
         Collection<Recipe> answer = new ArrayList();
-        answer = em
-                .createQuery("SELECT s FROM Recipe s WHERE UPPER(s.ingredientName) = UPPER(?1)", Recipe.class)
+        answer = em.createQuery("SELECT s FROM Recipe s WHERE UPPER(s.ingredientName) = UPPER(?1)", Recipe.class)
                 .setParameter(1,ingredientName)
                 .getResultList();
+        /*answer = em
+                .createQuery("SELECT s FROM Recipe s WHERE UPPER(s.ingredientName) = UPPER(?1)", Recipe.class)
+                .setParameter(1,ingredientName)
+                .getResultList();*/
         /*Book book = entityManager.createQuery("""
     select b
     from Book b
